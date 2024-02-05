@@ -1,0 +1,40 @@
+name: Upload files
+# This workflow is triggered on pushes to the repository.
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'files/**'
+      - '.github/workflows/**'
+  pull_request:
+    branches:
+      - main
+    paths:
+      - 'files/**'
+      - '.github/workflows/**'
+jobs:
+  main:
+    name: Build + Deploy
+    runs-on: ubuntu-latest
+    env:
+      PASSWORD_CONTENT: ${{ secrets.PASSWORD_CONTENT }}
+    steps:
+      # Checkout this repository
+      - name: Checkout repo
+        uses: actions/checkout@v2
+
+      # Configure AWS credentials
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        env:
+          S3_PATH: "s3://${{ secrets.S3_BUCKET_NAME }}"
+        with:
+          aws-region: eu-west-3
+          aws-access-key-id: ${{ secrets.S3_ACCESS_KEY }}
+          aws-secret-access-key: ${{ secrets.S3_SECRET_KEY }}
+
+      # Syncronize files with bucket S3
+      - name: Syncronize files with S3 bucket
+        run: |
+            aws s3 sync files/ s3://${{ secrets.S3_BUCKET_NAME }}
