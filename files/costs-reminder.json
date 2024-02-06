@@ -14,6 +14,6 @@
     "gasto_seguro": {
         "nombre": "Seguro del hogar",
         "importe": 291.36,
-        "frecuencia": "0 0 28 4/6 *"
+        "frecuencia": "0 0 28 3/6 *"
     }
 }
