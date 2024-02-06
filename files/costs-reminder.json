@@ -2,18 +2,18 @@
     "gasto_luz": {
         "nombre": "Luz",
         "importe": 40,
-        "frecuencia": "0 0 0 28 * ? *"
+        "frecuencia": "0 0 28 * *"
     },
 
     "gasto_gas": {
         "nombre": "Gas",
         "importe": 40,
-        "frecuencia": "0 0 0 15 1/2 ? *"
+        "frecuencia": " 0 0 15 1/2 *"
     },
 
     "gasto_seguro": {
         "nombre": "Seguro del hogar",
         "importe": 291.36,
-        "frecuencia": "0 0 0 28 3/6 ? *"
+        "frecuencia": "0 0 0 28 3/6 *"
     }
 }
