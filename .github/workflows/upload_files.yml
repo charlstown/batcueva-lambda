@@ -36,4 +36,4 @@ jobs:
           aws_access_key_id: ${{ secrets.AWS_KEY_ID }}
           aws_secret_access_key: ${{ secrets.AWS_KEY_SECRET }}
           function_name: lambda_gastos
-          zip_file: lambda_gastos.zip
+          zip_file: lambdas/lambda_gastos.zip
