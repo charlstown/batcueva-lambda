@@ -24,9 +24,10 @@ jobs:
 
       # Zip lambda folders
       - name: Zip lambda folders
+        working-directory: lambdas
         run: |
-          cd lambdas
-          zip -r lambda_gastos.zip lambda_gastos
+          cd lambda_gastos
+          zip -r ../lambda_gastos.zip .
         
       # Upload lambda gastos
       - name: Upload lambda gastos
