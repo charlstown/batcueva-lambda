@@ -28,6 +28,8 @@ jobs:
         run: |
           cd lambda_gastos
           zip -r ../lambda_gastos.zip .
+          cd ../lambda_gcalendar
+          zip -r ../lambda_gcalendar.zip .
         
       # Upload lambda gastos
       - name: Upload lambda gastos
@@ -38,3 +40,13 @@ jobs:
           aws_secret_access_key: ${{ secrets.AWS_KEY_SECRET }}
           function_name: lambda_gastos
           zip_file: lambdas/lambda_gastos.zip
+        
+      # Upload lambda gastos
+      - name: Upload lambda calendar
+        uses: appleboy/lambda-action@master
+        with:
+          aws_region: eu-west-3
+          aws_access_key_id: ${{ secrets.AWS_KEY_ID }}
+          aws_secret_access_key: ${{ secrets.AWS_KEY_SECRET }}
+          function_name: lambda_gcalendar
+          zip_file: lambdas/lambda_gcalendar.zip
