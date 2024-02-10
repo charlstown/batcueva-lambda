@@ -5,36 +5,34 @@ on:
     branches:
       - main
     paths:
-      - 'files/**'
+      - 'lambdas/**'
       - '.github/workflows/**'
   pull_request:
     branches:
       - main
     paths:
-      - 'files/**'
+      - 'lambdas/**'
       - '.github/workflows/**'
 jobs:
   main:
-    name: Build + Deploy
+    name: Deploy lambdas
     runs-on: ubuntu-latest
-    env:
-      PASSWORD_CONTENT: ${{ secrets.PASSWORD_CONTENT }}
     steps:
       # Checkout this repository
       - name: Checkout repo
         uses: actions/checkout@v2
 
-      # Configure AWS credentials
-      - name: Configure AWS Credentials
-        uses: aws-actions/configure-aws-credentials@v4
-        env:
-          S3_PATH: "s3://${{ secrets.S3_BUCKET_NAME }}"
-        with:
-          aws-region: eu-west-3
-          aws-access-key-id: ${{ secrets.S3_ACCESS_KEY }}
-          aws-secret-access-key: ${{ secrets.S3_SECRET_KEY }}
-
-      # Syncronize files with bucket S3
-      - name: Syncronize files with S3 bucket
+      # Zip lambda folders
+      - name: Zip lambda folders
         run: |
-            aws s3 sync files/ s3://${{ secrets.S3_BUCKET_NAME }}
+          zip -r lambda_gastos.zip lambdas/lambda_gastos
+        
+      # Upload lambda gastos
+      - name: Upload lambda gastos
+        uses: appleboy/lambda-action@master
+        with:
+          aws_region: eu-west-3
+          aws_access_key_id: ${{ secrets.S3_ACCESS_KEY }}
+          aws_secret_access_key: ${{ secrets.S3_SECRET_KEY }}
+          function_name: lambda_gastos
+          zip_file: lambda_gastos.zip
