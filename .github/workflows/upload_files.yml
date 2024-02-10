@@ -32,7 +32,7 @@ jobs:
         uses: appleboy/lambda-action@master
         with:
           aws_region: eu-west-3
-          aws_access_key_id: ${{ secrets.S3_ACCESS_KEY }}
-          aws_secret_access_key: ${{ secrets.S3_SECRET_KEY }}
+          aws_access_key_id: ${{ secrets.AWS_KEY_ID }}
+          aws_secret_access_key: ${{ secrets.AWS_KEY_SECRET }}
           function_name: lambda_gastos
           zip_file: lambda_gastos.zip
