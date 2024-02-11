@@ -24,7 +24,7 @@ jobs:
 
       # Zip lambda folders
       - name: Zip lambda folders
-        working-directory: lambda_gastos_semanal
+        working-directory: lambdas/lambda_gastos_semanal
         run: |
           zip -r ../lambda_gastos_semanal.zip .
         
