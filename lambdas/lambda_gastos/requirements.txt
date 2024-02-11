@@ -1,0 +1,11 @@
+# Telegram libraries
+certifi
+chardet
+idna
+requests
+telebot
+urllib3
+
+# Other libraries
+croniter
+pytz

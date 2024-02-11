@@ -4,6 +4,8 @@ import datetime
 from croniter import croniter
 from murci import Murci
 
+lambda_handler(none, none)
+
 # Main code
 def lambda_handler(event, context) -> dict:
     """
@@ -31,7 +33,7 @@ def lambda_handler(event, context) -> dict:
     
         # Extract payment month
         cron = v['frecuencia']
-        executed = executed_this_month(cron)
+        executed = executed_this_week(cron)
         
         # Add to total expenses if executed next month
         if executed:
@@ -39,14 +41,16 @@ def lambda_handler(event, context) -> dict:
             monthly_expenses[v["nombre"]] = v["importe"]
     print("Monthly expenses filtered successfully")
     
-    # Generate message to send
-    message = f"**RECIBOS DEL MES** \nEn el próximo mes se estima un coste común total de **{total_expenses} € 💸**\n---"
     
-    for k, v in monthly_expenses.items():
-        message_expense = f"- El gasto de {k}: {v} €"
-        message = message + "\n" + message_expense
-    
-    # Send message
+    if monthly_expenses:
+        # Generate message to send
+        message = f"**RECIBOS DE LA SEMANA** \nRecordad que esta semana se cargarán los siguientes recibos a vuestra cuenta 💸**\n---"
+        for k, v in monthly_expenses.items():
+            message_expense = f"- El gasto de {k}: {v} €"
+            message = message + "\n" + message_expense
+    else:
+        message = "RECIBOS DE LA SEMANA\n¡Felicidades, Carlos y Paula! 🎉🥳 Esta semana vuestros recibos decidieron tomarse unas vacaciones. ¡Hora de brindar por ello!"
+        
     print(f"Message send: {message}")
     murci.send_message(message)
 
@@ -56,20 +60,21 @@ def lambda_handler(event, context) -> dict:
     }
 
 
-def executed_this_month(cron: str) -> bool:
+def executed_this_week(cron: str) -> bool:
     """
-    Check if the next planned run matches the next month
+    Check if the next planned run matches the next week
 
     :param cron: cron string in unix format (5 digits)
     :return: True if the next run matches the next month
     """
     
-    # Generates the first day of the next month as datetime
+    # Generates the first day of the next week as datetime
     now = datetime.datetime.now()
-    now_date = datetime.datetime(now.year, now.month + 1, 1, 00, 00)
-    
-    # Generates the next cron date from the next month datetime
-    cron = croniter(cron, now_date)
+    cron = croniter(cron, now)
     next_date = cron.get_next(datetime.datetime)
     
-    return (now_date.year == next_date.year) & (now_date.month == next_date.month)
+    # Get the start and end of the current week
+    start_of_week = now - datetime.timedelta(days=now.weekday())
+    end_of_week = start_of_week + datetime.timedelta(days=6)
+    
+    return start_of_week <= next_date <= end_of_week
