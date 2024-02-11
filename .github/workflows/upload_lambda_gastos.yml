@@ -6,7 +6,7 @@ on:
       - main
     paths:
       - 'lambdas/lambda_gastos/**'
-      - '.github/workflows/**'
+      - '.github/workflows/upload_lambda_gastos.yml'
   pull_request:
     branches:
       - main
@@ -24,7 +24,7 @@ jobs:
 
       # Zip lambda folders
       - name: Zip lambda folders
-        working-directory: lambda_gastos
+        working-directory: lambdas/lambda_gastos
         run: |
           zip -r ../lambda_gastos.zip .
         

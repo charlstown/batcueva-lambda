@@ -6,7 +6,7 @@ on:
       - main
     paths:
       - 'lambdas/lambda_gcalendar/**'
-      - '.github/workflows/**'
+      - '.github/workflows/upload_lambda_gcalendar.yml'
   pull_request:
     branches:
       - main
@@ -24,7 +24,7 @@ jobs:
 
       # Zip lambda folders
       - name: Zip lambda folders
-        working-directory: lambda_gcalendar
+        working-directory: lambdas/lambda_gcalendar
         run: |
           zip -r ../lambda_gcalendar.zip .
         
