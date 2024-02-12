@@ -37,12 +37,18 @@ Descripción
 
 [:arrow_forward: Ver documentación de esta lambda](./lambdas/lambda_gastos/README.md)
 
+### Labmda gastos
+
+Descripción
+
+[:arrow_forward: Ver documentación de esta lambda](./lambdas/lambda_gastos_semanal/README.md)
+
 
 ### Lambda calendario
 
 Descripción
 
-[:arrow_forward: Ver documentación de esta lambda](./lambdas/lambda_calendario/README.md)
+[:arrow_forward: Ver documentación de esta lambda](./lambdas/lambda_gcalendar/README.md)
 
 
 ### Lambda noticias
