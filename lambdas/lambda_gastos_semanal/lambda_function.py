@@ -4,7 +4,6 @@ import datetime
 from croniter import croniter
 from murci import Murci
 
-lambda_handler(none, none)
 
 # Main code
 def lambda_handler(event, context) -> dict:

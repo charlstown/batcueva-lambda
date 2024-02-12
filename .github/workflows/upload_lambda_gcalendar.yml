@@ -12,7 +12,7 @@ on:
       - main
     paths:
       - 'lambdas/lambda_gcalendar/**'
-      - '.github/workflows/**'
+      - '.github/workflows/upload_lambda_gcalendar.yml'
 jobs:
   main:
     name: Upload lambda gastos

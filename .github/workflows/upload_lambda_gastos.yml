@@ -12,7 +12,7 @@ on:
       - main
     paths:
       - 'lambdas/lambda_gastos/**'
-      - '.github/workflows/**'
+      - '.github/workflows/upload_lambda_gastos.yml'
 jobs:
   main:
     name: Upload lambda gastos
