@@ -3,6 +3,7 @@
 # -----------------------------------------------------
 
 # Libraries
+import os
 import yaml
 from newsdataapi import NewsDataApiClient
 import time
@@ -15,7 +16,8 @@ class NewsAPI:
         """_summary_
         """
         # Global vars
-        self.api = NewsDataApiClient(apikey="pub_38105c6a8f6f914b499927ebf5f16ff8168a9")
+        token = os.environ.get('NEWS_API_KEY')
+        self.api = NewsDataApiClient(apikey=token)
         self.config_news = self.read_config_file()
         self.n_news = self.config_news['noticias_por_categoria']
 

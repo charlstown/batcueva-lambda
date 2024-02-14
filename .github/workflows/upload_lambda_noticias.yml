@@ -1,0 +1,39 @@
+name: Upload files
+# This workflow is triggered on pushes to the repository.
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'lambdas/lambda_noticias/**'
+      - '.github/workflows/upload_lambda_noticias.yml'
+  pull_request:
+    branches:
+      - main
+    paths:
+      - 'lambdas/lambda_noticias/**'
+      - '.github/workflows/upload_lambda_noticias.yml'
+jobs:
+  main:
+    name: Upload lambda noticias
+    runs-on: ubuntu-latest
+    steps:
+      # Checkout this repository
+      - name: Checkout repo
+        uses: actions/checkout@v2
+
+      # Zip lambda folders
+      - name: Zip lambda folders
+        working-directory: lambdas/lambda_noticias
+        run: |
+          zip -r ../lambda_noticias.zip .
+        
+      # Upload lambda noticias
+      - name: Upload lambda noticias
+        uses: appleboy/lambda-action@master
+        with:
+          aws_region: eu-west-3
+          aws_access_key_id: ${{ secrets.AWS_KEY_ID }}
+          aws_secret_access_key: ${{ secrets.AWS_KEY_SECRET }}
+          function_name: lambda_noticias
+          zip_file: lambdas/lambda_noticias.zip
