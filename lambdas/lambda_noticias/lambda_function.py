@@ -40,7 +40,7 @@ def lambda_handler(event, context):
 
         message += f"_Fecha de publicación: {item['date']}_\n"
 
-        f_link = item['link'].replace('_', '\_')
+        f_link = item['link'].replace('_', '\\_')
 
         message += f"[📰 Leer la noticia]({f_link})\n"
 
