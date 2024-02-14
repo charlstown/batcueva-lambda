@@ -1,0 +1,42 @@
+# Available categories:
+# business crime domestic education entertainment environment food
+# health lifestyle other politics science sports technology top tourism world
+
+noticias_por_categoria: 2
+noticias:
+  - name: sostenibilidad
+    category:
+      - environment
+    keywords:
+      - calentamiento
+      - ecologismo
+      - clima
+      - Conservación
+      - Sostenible
+  - name: espacio
+    category:
+      - science
+    keywords:
+      - espacio
+      - satélite
+      - telescopio
+      - universo
+      - planetas
+      - asteroide
+  - name: feminismo
+    category:
+      - politics
+    keywords:
+      - feminismo
+      - igualdad
+      - sororidad
+      - machismo
+      - feminism
+  - name: Regulación tecnológica
+    category:
+      - technology
+    keywords:
+      - Unión Europea
+      - GDPR
+      - Normativa
+      - Regulación

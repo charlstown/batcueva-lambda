@@ -37,7 +37,7 @@ Descripción
 
 [:arrow_forward: Ver documentación de esta lambda](./lambdas/lambda_gastos/README.md)
 
-### Labmda gastos
+### Labmda gastos semanal
 
 Descripción
 

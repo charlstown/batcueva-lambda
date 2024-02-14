@@ -1,9 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 # -----------------------------------------------------
-# Project: lambda_gastos
-# Author/s: charlstown
-# -----------------------------------------------------
+
 import os
 import telebot
 
