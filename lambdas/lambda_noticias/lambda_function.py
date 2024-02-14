@@ -60,6 +60,7 @@ def lambda_handler(event, context):
     }
 
 
+# Local run
 if __name__ == "__main__":
-    # Local test
+    # Run lambda function
     lambda_handler(None, None)

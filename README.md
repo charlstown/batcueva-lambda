@@ -33,13 +33,14 @@ Descripción
 
 ### Labmda gastos
 
-Descripción
+Función para analizar un archivo de gastos fijos comunes y enviar un **resumen mensual de los gastos** a través de Telegram.
 
 [:arrow_forward: Ver documentación de esta lambda](./lambdas/lambda_gastos/README.md)
 
+
 ### Labmda gastos semanal
 
-Descripción
+Función para analizar un archivo de gastos fijos comunes y enviar un **resumen semanal de los gastos** a través de Telegram.
 
 [:arrow_forward: Ver documentación de esta lambda](./lambdas/lambda_gastos_semanal/README.md)
 
@@ -53,6 +54,6 @@ Descripción
 
 ### Lambda noticias
 
-Descripción
+Función para recoger noticias basadas en nuestros intereses y enviar un resumen cada dos días de las últimas 48 horas a través de Telegram.
 
 [:arrow_forward: Ver documentación de esta lambda](./lambdas/lambda_noticias/README.md)

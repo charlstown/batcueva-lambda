@@ -73,3 +73,9 @@ def executed_this_month(cron: str) -> bool:
     next_date = cron.get_next(datetime.datetime)
     
     return (now_date.year == next_date.year) & (now_date.month == next_date.month)
+
+
+# Local run
+if __name__ == "__main__":
+    # Run lambda function
+    lambda_handler(None, None)

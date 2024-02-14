@@ -28,9 +28,7 @@ class Murci:
         :param message: string with the message you want to send
         :return: None
         """
-        token = os.environ.get('BOT_TOKEN')
-        chat_id = os.environ.get('CHAT_ID')
         
-        bot = telebot.TeleBot(token=token)
+        bot = telebot.TeleBot(token=self.token)
         
-        bot.send_message(chat_id=chat_id, text=message, parse_mode='MARKDOWN')
+        bot.send_message(chat_id=self.chat_id, text=message, parse_mode='MARKDOWN')
