@@ -1,0 +1,17 @@
+{
+    "gasto_seguro": {
+        "nombre": "Seguro del hogar",
+        "importe": 150,
+        "frecuencia": "0 0 28 4/6 *"
+    },
+    "gasto_ibi": {
+        "nombre": "IBI",
+        "importe": 294.48,
+        "frecuencia": "0 0 1 10 *" 
+    },
+    "gasto_seguro_coche": {
+        "nombre": "Seguro del coche",
+        "importe": 335,
+        "frecuencia": "0 0 20 10 *" 
+    }
+}

@@ -5,13 +5,13 @@ on:
     branches:
       - main
     paths:
-      - 'lambdas/lambda_gastos/**'
+      - 'lambdas/lambda_gastos_puntuales/**'
       - '.github/workflows/upload_lambda_gastos.yml'
   pull_request:
     branches:
       - main
     paths:
-      - 'lambdas/lambda_gastos/**'
+      - 'lambdas/lambda_gastos_puntuales/**'
       - '.github/workflows/upload_lambda_gastos.yml'
 jobs:
   main:
@@ -24,9 +24,9 @@ jobs:
 
       # Zip lambda folders
       - name: Zip lambda folders
-        working-directory: lambdas/lambda_gastos
+        working-directory: lambdas/lambda_gastos_puntuales
         run: |
-          zip -r ../lambda_gastos.zip .
+          zip -r ../lambda_gastos_puntuales.zip .
         
       # Upload lambda gastos
       - name: Upload lambda gastos
@@ -35,5 +35,5 @@ jobs:
           aws_region: eu-west-3
           aws_access_key_id: ${{ secrets.AWS_KEY_ID }}
           aws_secret_access_key: ${{ secrets.AWS_KEY_SECRET }}
-          function_name: lambda_gastos
-          zip_file: lambdas/lambda_gastos.zip
+          function_name: lambda_gastos_puntuales
+          zip_file: lambdas/lambda_gastos_puntuales.zip
