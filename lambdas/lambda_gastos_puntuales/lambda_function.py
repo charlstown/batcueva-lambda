@@ -50,6 +50,8 @@ def lambda_handler(event, context) -> dict:
         # Send message
         print(f"Message send: {message}")
         murci.send_message(message)
+    else:
+        print("No relevant expenses detected")
 
     return {
         'statusCode': 200,
